@@ -3,9 +3,12 @@
 import Image from 'next/image'
 import { ArrowUpRight } from 'lucide-react'
 
+import Link from 'next/link'
+
 const venues = [
   {
     title:       'Clubs & Bars',
+    slug:        'clubs-and-bars',
     description:
       'Punishing low-end and crystal-clear mids designed for high-energy nightlife environments. Built to perform night after night at extreme SPLs.',
     image:       '/images/venue-club.jpg',
@@ -16,16 +19,18 @@ const venues = [
   },
   {
     title:       'Auditoriums',
+    slug:        'auditoriums',
     description:
       'Even coverage across every seat. Precision-steerable line arrays eliminate reflections and dead spots in challenging acoustic spaces.',
     image:       '/images/venue-auditorium.jpg',
     tags:        ['Speech Clarity', 'Wide Coverage', 'Low Coloration'],
     span:        'col-span-1 row-span-1',
-    accent:      'blue',
+    accent:      'red', // Enforcing red glow per instructions
     imagePos:    'object-center',
   },
   {
     title:       'Live Concerts',
+    slug:        'live-concerts',
     description:
       'Festival-grade touring systems delivering reference-class sound to crowds of thousands. Sky-high output with no compromise on fidelity.',
     image:       '/images/venue-concert.jpg',
@@ -36,12 +41,13 @@ const venues = [
   },
   {
     title:       'Hotels & Malls',
+    slug:        'hotels-and-malls',
     description:
       'Architecturally discreet systems that blend into premium interiors while delivering immersive, full-range background and foreground audio.',
     image:       '/images/venue-hotel.jpg',
     tags:        ['Discreet Install', 'Multi-Zone', 'Voice Evac Ready'],
     span:        'col-span-1 md:col-span-2 row-span-1',   // wide card
-    accent:      'blue',
+    accent:      'red', // Enforcing red glow per instructions
     imagePos:    'object-center',
   },
 ]
@@ -96,13 +102,13 @@ export default function SolutionsGrid() {
             const tagBorder   = isRed ? 'oklch(0.55 0.24 27 / 0.35)' : 'oklch(0.60 0.18 250 / 0.35)'
 
             return (
-              <article
+              <Link
                 key={venue.title}
-                className={`group relative flex flex-col justify-end rounded-lg overflow-hidden cursor-pointer ${venue.span}`}
+                href={`/projects/${venue.slug}`}
+                className={`group relative flex flex-col justify-end rounded-lg overflow-hidden cursor-pointer block ${venue.span}`}
                 style={{
                   border: `1px solid ${borderColor}`,
                 }}
-                role="region"
                 aria-label={venue.title}
               >
                 {/* Background image */}
@@ -189,7 +195,7 @@ export default function SolutionsGrid() {
                   }}
                   aria-hidden="true"
                 />
-              </article>
+              </Link>
             )
           })}
         </div>

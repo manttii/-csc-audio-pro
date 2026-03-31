@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { ArrowRight, ChevronDown } from 'lucide-react'
+import { ConsultationModal } from '@/components/consultation-modal'
 
 export default function HeroSection() {
   return (
@@ -78,13 +79,15 @@ export default function HeroSection() {
                 className="group-hover:translate-x-1 transition-transform duration-200"
               />
             </Link>
-            <Link
-              href="#about"
-              className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground text-sm tracking-widest uppercase transition-colors duration-200"
-            >
-              Our Story
-              <ArrowRight size={14} />
-            </Link>
+            <ConsultationModal>
+              <button
+                id="hero-book-consultation-btn"
+                className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground text-sm tracking-widest uppercase transition-colors duration-200"
+              >
+                Book a Consultation
+                <ArrowRight size={14} />
+              </button>
+            </ConsultationModal>
           </div>
 
           {/* Spec strip */}

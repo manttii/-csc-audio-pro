@@ -5,56 +5,10 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 
-const categories = [
-  {
-    name: 'Subwoofers',
-    slug: 'subwoofers',
-    imageUrl: 'https://images.unsplash.com/photo-1545454675-3531b543be5d?q=80&w=800',
-    tone: 'red',
-    specs: ['MAX SPL: 145dB', 'LF DRIVER: 2x18"', 'CONFIG: Cardioid'],
-  },
-  {
-    name: 'Loudspeakers',
-    slug: 'loudspeakers',
-    imageUrl: 'https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?q=80&w=800',
-    tone: 'red',
-    specs: ['MAX SPL: 139dB', 'HF DRIVER: 1.4"', 'THROW: Long-Range'],
-  },
-  {
-    name: 'Stage Monitors',
-    slug: 'stage-monitors',
-    imageUrl: 'https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?q=80&w=800',
-    tone: 'red',
-    specs: ['WEDGE: Coaxial', 'POWER: 700W RMS', 'COVERAGE: 80°'],
-  },
-  {
-    name: 'Line Arrays',
-    slug: 'line-arrays',
-    imageUrl: 'https://images.unsplash.com/photo-1516280440614-37939bbacd81?q=80&w=800',
-    tone: 'red',
-    specs: ['MODULE: 3-Way', 'COUPLING: Fast-Rig', 'PATTERN: 120°'],
-  },
-  {
-    name: 'Ceiling Speakers',
-    slug: 'ceiling-speakers',
-    imageUrl: 'https://images.unsplash.com/photo-1493723843671-1d655e66ac1c?q=80&w=800',
-    tone: 'red',
-    specs: ['PROFILE: Low-Depth', 'VOICING: Wide', 'INSTALL: Quick-Lock'],
-  },
-  {
-    name: 'Amplifiers',
-    slug: 'amplifiers',
-    imageUrl: 'https://images.unsplash.com/photo-1558444479-c84851830060?q=80&w=800',
-    tone: 'blue',
-    specs: ['CLASS: D', 'CHANNELS: 4', 'OUTPUT: 4 x 1500W'],
-  },
-  {
-    name: 'DSPs',
-    slug: 'dsps',
-    imageUrl: 'https://images.unsplash.com/photo-1463171379579-3fdfb86d6285?q=80&w=800',
-    tone: 'blue',
-    specs: ['I/O: 4x8', 'LATENCY: <1ms', 'FILTERS: FIR + IIR'],
-  },
+import { CATEGORIES } from '@/lib/product-data'
+
+const gridCategories = [
+  ...CATEGORIES,
   {
     name: 'Search Products',
     slug: '',
@@ -103,7 +57,7 @@ export default function ProductsGrid() {
         </div>
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-          {categories.map((category, index) => (
+          {gridCategories.map((category, index) => (
             <Link
               key={category.name}
               href={category.name === 'Search Products' ? '/products' : `/products/${category.slug}`}

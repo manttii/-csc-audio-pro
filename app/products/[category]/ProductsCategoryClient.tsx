@@ -5,33 +5,8 @@ import Navbar from '@/components/navbar'
 import Footer from '@/components/footer'
 import { Suspense, useEffect, useMemo, useRef, useState } from 'react'
 import { ArrowRight, Search } from 'lucide-react'
-
-const SPEAKER_IMAGE_URL = 'https://images.unsplash.com/photo-1545454675-3531b543be5d?q=80&w=800'
-const TECH_GEAR_IMAGE_URL = 'https://images.unsplash.com/photo-1558444479-c84851830060?q=80&w=800'
-const STAGE_MONITOR_IMAGE_URL = 'https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?q=80&w=800'
-
-const ALL_PRODUCTS = [
-  { name: 'TH-15', category: 'Subwoofers', slug: 'subwoofers', imageUrl: SPEAKER_IMAGE_URL },
-  { name: 'TH-18', category: 'Subwoofers', slug: 'subwoofers', imageUrl: SPEAKER_IMAGE_URL },
-  { name: 'TH-218', category: 'Subwoofers', slug: 'subwoofers', imageUrl: SPEAKER_IMAGE_URL },
-  { name: 'HB-18', category: 'Subwoofers', slug: 'subwoofers', imageUrl: SPEAKER_IMAGE_URL },
-  { name: 'HB-218', category: 'Subwoofers', slug: 'subwoofers', imageUrl: SPEAKER_IMAGE_URL },
-  { name: 'CF-10', category: 'Loudspeakers', slug: 'loudspeakers', imageUrl: SPEAKER_IMAGE_URL },
-  { name: 'CF-12', category: 'Loudspeakers', slug: 'loudspeakers', imageUrl: SPEAKER_IMAGE_URL },
-  { name: 'CF-15', category: 'Loudspeakers', slug: 'loudspeakers', imageUrl: SPEAKER_IMAGE_URL },
-  { name: 'FT-12', category: 'Loudspeakers', slug: 'loudspeakers', imageUrl: SPEAKER_IMAGE_URL },
-  { name: 'FT-15', category: 'Loudspeakers', slug: 'loudspeakers', imageUrl: SPEAKER_IMAGE_URL },
-  { name: 'LA-208', category: 'Line Arrays', slug: 'line-arrays', imageUrl: SPEAKER_IMAGE_URL },
-  { name: 'LA-210', category: 'Line Arrays', slug: 'line-arrays', imageUrl: SPEAKER_IMAGE_URL },
-  { name: 'LA-212', category: 'Line Arrays', slug: 'line-arrays', imageUrl: SPEAKER_IMAGE_URL },
-  { name: 'M-12', category: 'Stage Monitors', slug: 'stage-monitors', imageUrl: STAGE_MONITOR_IMAGE_URL },
-  { name: 'M-15', category: 'Stage Monitors', slug: 'stage-monitors', imageUrl: STAGE_MONITOR_IMAGE_URL },
-  { name: 'H-Series', category: 'Amplifiers', slug: 'amplifiers', imageUrl: TECH_GEAR_IMAGE_URL },
-  { name: 'D-Series', category: 'Amplifiers', slug: 'amplifiers', imageUrl: TECH_GEAR_IMAGE_URL },
-  { name: 'MA-Series', category: 'Amplifiers', slug: 'amplifiers', imageUrl: TECH_GEAR_IMAGE_URL },
-  { name: 'DSP-206', category: 'DSPs', slug: 'dsps', imageUrl: TECH_GEAR_IMAGE_URL },
-  { name: 'DSP-408', category: 'DSPs', slug: 'dsps', imageUrl: TECH_GEAR_IMAGE_URL },
-] as const
+import { ALL_PRODUCTS } from '@/lib/product-data'
+import { ProductImage } from '@/components/ui/product-image'
 
 function ProductList({ activeCategorySlug }: { activeCategorySlug: string }) {
   const [searchQuery, setSearchQuery] = useState('')
@@ -90,13 +65,14 @@ function ProductList({ activeCategorySlug }: { activeCategorySlug: string }) {
               Pro Series
             </span>
 
-            <div className="relative aspect-[4/3] bg-zinc-900 rounded-md mb-3 overflow-hidden">
-              <Image
+            <div className="relative aspect-square bg-zinc-950 rounded-t-md mb-3 overflow-hidden group-hover:bg-zinc-900 transition-colors">
+              <ProductImage
                 src={product.imageUrl}
+                fallbackSrc={product.fallbackUrl}
                 alt={product.name}
                 fill
                 sizes="(max-width: 768px) 50vw, (max-width: 1024px) 25vw, 20vw"
-                className="object-cover transition-transform duration-300 group-hover:scale-105"
+                className="object-contain p-3 transition-transform duration-300 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/55 to-black/20" />
             </div>

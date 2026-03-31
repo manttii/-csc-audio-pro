@@ -3,10 +3,14 @@ import { Twitter, Instagram, Linkedin, Youtube } from 'lucide-react'
 
 const footerLinks = {
   Products: [
-    { label: 'Cello Series',      href: '#' },
-    { label: 'Contrabass Series', href: '#' },
-    { label: 'Harp Series',       href: '#' },
-    { label: 'Signal Processing', href: '#' },
+    { label: 'Ceiling Speakers',         href: '/products/ceiling-speakers' },
+    { label: 'Wall-Mount Speakers',      href: '/products/wall-mount-speakers' },
+    { label: 'Line Arrays',              href: '/products/line-arrays' },
+    { label: 'Subwoofers',               href: '/products/subwoofers' },
+    { label: 'Power Amplifiers',         href: '/products/amplifiers' },
+    { label: 'Digital Signal Processors',href: '/products/dsps' },
+    { label: 'Microphones & Inputs',     href: '/products/microphones-inputs' },
+    { label: 'Rack Accessories',         href: '/products/rack-accessories' },
   ],
   Solutions: [
     { label: 'Live Events',         href: '#' },
@@ -99,7 +103,7 @@ export default function Footer() {
                   <li key={link.label}>
                     <Link
                       href={link.href}
-                      className="text-muted-foreground hover:text-foreground text-sm transition-colors duration-200"
+                      className="text-muted-foreground hover:text-primary hover:brightness-110 text-sm transition-all duration-200"
                     >
                       {link.label}
                     </Link>

@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { Menu, X } from 'lucide-react'
+import { ConsultationModal } from '@/components/consultation-modal'
 
 const navLinks = [
   { label: 'Home',       href: '#'          },
@@ -61,12 +62,14 @@ export default function Navbar() {
 
         {/* CTA */}
         <div className="hidden md:flex items-center gap-4">
-          <Link
-            href="#contact"
-            className="text-sm font-medium tracking-widest uppercase px-5 py-2 rounded bg-primary text-primary-foreground hover:brightness-110 active:scale-95 transition-all duration-200 shadow-[0_0_16px_oklch(0.55_0.24_27/0.45)]"
-          >
-            Request a Quote
-          </Link>
+          <ConsultationModal>
+            <button
+              id="navbar-request-quote-btn"
+              className="text-sm font-medium tracking-widest uppercase px-5 py-2 rounded bg-primary text-primary-foreground hover:brightness-110 active:scale-95 transition-all duration-200 shadow-[0_0_16px_oklch(0.55_0.24_27/0.45)]"
+            >
+              Request a Quote
+            </button>
+          </ConsultationModal>
         </div>
 
         {/* Mobile toggle */}
@@ -94,13 +97,15 @@ export default function Navbar() {
                 {link.label}
               </Link>
             ))}
-            <Link
-              href="#contact"
-              onClick={() => setMenuOpen(false)}
-              className="mt-2 text-sm font-medium tracking-widest uppercase px-5 py-2 rounded bg-primary text-primary-foreground hover:brightness-110 transition-all text-center shadow-[0_0_16px_oklch(0.55_0.24_27/0.4)]"
-            >
-              Request a Quote
-            </Link>
+            <ConsultationModal>
+              <button
+                id="navbar-mobile-request-quote-btn"
+                onClick={() => setMenuOpen(false)}
+                className="mt-2 w-full text-sm font-medium tracking-widest uppercase px-5 py-2 rounded bg-primary text-primary-foreground hover:brightness-110 transition-all text-center shadow-[0_0_16px_oklch(0.55_0.24_27/0.4)]"
+              >
+                Request a Quote
+              </button>
+            </ConsultationModal>
           </nav>
         </div>
       )}
